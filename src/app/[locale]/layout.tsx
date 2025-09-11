@@ -14,9 +14,9 @@ const poppins = Poppins({
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
 
     // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {
