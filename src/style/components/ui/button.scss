@@ -1,0 +1,332 @@
+.button {
+  width: max-content;
+  background: $bg-slate;
+  border: 0.5px solid $bg-gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity $transition-time-sm $transition-fn, background-color $transition-time-md $transition-fn,
+    box-shadow 0.1s $transition-fn;
+  * {
+    margin: 0;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  .button-icon {
+    margin-right: calc($m-1 / 2);
+  }
+}
+
+// Shape
+.button-square {
+  border-radius: $rounded;
+}
+
+.button-round {
+  border-radius: $rounded-xxl;
+}
+
+// Size
+.button-sm {
+  padding: $p-1 - 0.8 $p-1 - 0.4;
+  font-size: $text-xs;
+  * {
+    font-size: $text-xs;
+  }
+}
+
+.button-md {
+  padding: $p-1 - 0.6 $p-1 - 0.2;
+}
+
+.button-lg {
+  padding: $p-1 - 0.4 $p-1;
+  font-size: $text-md;
+  * {
+    font-size: $text-md;
+  }
+}
+
+// Color
+.button-color {
+  *,
+  path {
+    color: $text-white !important;
+  }
+}
+
+.button-blue {
+  background: $bg-blue;
+  border-color: $bg-blue;
+  &:active {
+    animation: pulse-blue $transition-time-xs linear;
+  }
+}
+
+.button-red {
+  background: $bg-red;
+  border-color: $bg-red;
+  &:active {
+    animation: pulse-red $transition-time-xs linear;
+  }
+}
+
+.button-green {
+  background: $bg-green;
+  border-color: $bg-green;
+  &:active {
+    animation: pulse-green $transition-time-xs linear;
+  }
+}
+
+.button-orange {
+  background: $bg-orange;
+  border-color: $bg-orange;
+  &:active {
+    animation: pulse-orange $transition-time-xs linear;
+  }
+}
+
+.button-yellow {
+  background: $bg-yellow;
+  border-color: $bg-yellow;
+  &:active {
+    animation: pulse-yellow $transition-time-xs linear;
+  }
+}
+
+.button-purple {
+  background: $bg-purple;
+  border-color: $bg-purple;
+  &:active {
+    animation: pulse-purple $transition-time-xs linear;
+  }
+}
+
+.button-pink {
+  background: $bg-pink;
+  border-color: $bg-pink;
+  &:active {
+    animation: pulse-pink $transition-time-xs linear;
+  }
+}
+
+.button-black {
+  border-color: $bg-black;
+  background: $bg-black;
+  &:active {
+    animation: pulse-black $transition-time-xs linear;
+  }
+}
+
+// Ghost
+.button-ghost {
+  background: $bg-white;
+}
+
+.button-dark.button-ghost {
+  background: $bg-dark;
+}
+
+.button-ghost-blue {
+  border-color: $bg-blue;
+  *,
+  path {
+    color: $text-blue !important;
+  }
+  &:active {
+    animation: pulse-blue $transition-time-xs linear;
+  }
+}
+
+.button-ghost-red {
+  border-color: $bg-red;
+  *,
+  path {
+    color: $text-red !important;
+  }
+  &:active {
+    animation: pulse-red $transition-time-xs linear;
+  }
+}
+
+.button-ghost-green {
+  border-color: $bg-green;
+  *,
+  path {
+    color: $text-green !important;
+  }
+  &:active {
+    animation: pulse-green $transition-time-xs linear;
+  }
+}
+
+.button-ghost-orange {
+  border-color: $bg-orange;
+  *,
+  path {
+    color: $text-orange !important;
+  }
+  &:active {
+    animation: pulse-orange $transition-time-xs linear;
+  }
+}
+
+.button-ghost-yellow {
+  border-color: $bg-yellow;
+  *,
+  path {
+    color: $text-yellow !important;
+  }
+  &:active {
+    animation: pulse-yellow $transition-time-xs linear;
+  }
+}
+
+.button-ghost-purple {
+  border-color: $bg-purple;
+  *,
+  path {
+    color: $text-purple !important;
+  }
+  &:active {
+    animation: pulse-purple $transition-time-xs linear;
+  }
+}
+
+.button-ghost-pink {
+  border-color: $bg-pink;
+  *,
+  path {
+    color: $text-pink !important;
+  }
+  &:active {
+    animation: pulse-pink $transition-time-xs linear;
+  }
+}
+
+.button-ghost-black {
+  border-color: $bg-black;
+  *,
+  path {
+    color: $text-black !important;
+  }
+  &:active {
+    animation: pulse-black $transition-time-xs linear;
+  }
+}
+
+// Text
+.button-text {
+  border-color: transparent;
+  background: transparent;
+  color: $text-blue;
+  * {
+    color: $text-blue;
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+// Loading;
+.button-loading {
+  cursor: not-allowed;
+  user-select: none;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.5;
+  }
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+// Disabled
+.button-disabled {
+  border-color: $bg-slate;
+  background: $bg-slate !important;
+  color: $text-gray;
+  user-select: none;
+  cursor: not-allowed;
+  * {
+    color: $text-gray;
+  }
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 $bg-blue-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-blue-rgba-trans;
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 $bg-red-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-red-rgba-trans;
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 $bg-green-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-green-rgba-trans;
+  }
+}
+
+@keyframes pulse-orange {
+  0% {
+    box-shadow: 0 0 0 0 $bg-orange-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-orange-rgba-trans;
+  }
+}
+
+@keyframes pulse-yellow {
+  0% {
+    box-shadow: 0 0 0 0 $bg-yellow-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-yellow-rgba-trans;
+  }
+}
+
+@keyframes pulse-purple {
+  0% {
+    box-shadow: 0 0 0 0 $bg-purple-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-purple-rgba-trans;
+  }
+}
+
+@keyframes pulse-pink {
+  0% {
+    box-shadow: 0 0 0 0 $bg-pink-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-pink-rgba-trans;
+  }
+}
+
+@keyframes pulse-black {
+  0% {
+    box-shadow: 0 0 0 0 $bg-black-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-black-rgba-trans;
+  }
+}
