@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ForwardRefRenderFunction, useEffect, useRef, forwardRef } from "react";
 import { useRender } from "@/hooks";
 import Portal from "@/components/Portal";

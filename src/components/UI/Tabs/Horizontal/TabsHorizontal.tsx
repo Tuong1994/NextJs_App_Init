@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, CSSProperties, ForwardRefRenderFunction, useState, forwardRef } from "react";
 import { TabsColor, TabsItems } from "../type";
 import TabsHorizontalHead from "./TabsHozitontalHead";

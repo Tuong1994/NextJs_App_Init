@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ForwardRefRenderFunction, forwardRef } from "react";
 import { DynamicGridItems } from "./type";
 import GridOneItem from "./GridOneItem";

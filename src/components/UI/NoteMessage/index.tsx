@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ForwardRefRenderFunction, CSSProperties, forwardRef } from "react";
 import { NoteMessageSize, NoteMessageType } from "./type";
 import useLayout from "../Layout/useLayout";

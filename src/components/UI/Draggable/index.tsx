@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ReactNode, FC, TouchEvent, MouseEvent, useState, useRef } from "react";
 
 export interface DraggableProps {

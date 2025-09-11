@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ReactNode, ForwardRefRenderFunction, forwardRef } from "react";
 import { ComponentAligns, ComponentJustify } from "@/common/type";
 import { FlexRowContext } from "./Context";

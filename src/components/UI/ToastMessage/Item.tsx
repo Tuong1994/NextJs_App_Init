@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, FC, useState, useRef, useEffect } from "react";
 import { ToastMessage } from "./type";
 import { HiXMark } from "react-icons/hi2";

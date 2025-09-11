@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, CSSProperties, ReactNode, FC, Ref, useContext, forwardRef } from "react";
 import { FaCheck } from "react-icons/fa";
 import ListContext, { ListContextState } from "./ListContext";

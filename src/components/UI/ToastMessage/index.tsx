@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ForwardRefRenderFunction, forwardRef } from "react";
 import ToastMessageItem from "./Item";
 import Portal from "@/components/Portal";

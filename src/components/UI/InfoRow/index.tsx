@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode, ForwardRefRenderFunction, forwardRef } from "react";
 import Paragraph, { ParagraphProps } from "@/components/UI/Typography/Paragraph";
 import Row, { FlexRowProps } from "../Flex/Row";

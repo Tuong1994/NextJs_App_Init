@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ReactNode, ForwardRefRenderFunction, CSSProperties, forwardRef } from "react";
 import { TypographyAlign, TypographyVariant } from "./type";
 import useLayout from "../Layout/useLayout";

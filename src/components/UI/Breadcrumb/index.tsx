@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, HTMLAttributes, ReactNode, ForwardRefRenderFunction, forwardRef } from "react";
 import { BreadcrumbItems } from "./type";
 import { HiChevronRight } from "react-icons/hi2";

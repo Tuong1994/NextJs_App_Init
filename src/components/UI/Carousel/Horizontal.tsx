@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ReactNode, ForwardRefRenderFunction, useEffect, forwardRef, useRef } from "react";
 import { CarouselItems } from "./type";
 import { HiOutlineChevronLeft as ArrowLeft, HiOutlineChevronRight as ArrowRight } from "react-icons/hi2";

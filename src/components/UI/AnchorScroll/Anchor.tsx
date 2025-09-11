@@ -1,3 +1,5 @@
+"use client"
+
 import { ForwardRefRenderFunction, HTMLAttributes, ReactNode, MouseEvent, forwardRef } from "react";
 import { AnchorColor } from "./type";
 import { smoothScroll } from "./smoothScroll";

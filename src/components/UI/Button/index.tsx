@@ -1,3 +1,5 @@
+"use client"
+
 import { ButtonHTMLAttributes, ReactNode, ForwardRefRenderFunction, useContext, forwardRef } from "react";
 import { ButtonColor, ButtonShape, ButtonSize } from "./type";
 import Spinner from "../Loading/Spinner";

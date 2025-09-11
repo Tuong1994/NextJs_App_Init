@@ -1,3 +1,5 @@
+"use client"
+
 import { InputHTMLAttributes, ForwardRefRenderFunction, ChangeEvent, forwardRef } from "react";
 import { SwitchColor, SwitchSize } from "./type";
 import utils from "@/utils";

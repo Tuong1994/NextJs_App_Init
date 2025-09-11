@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ReactNode, ForwardRefRenderFunction, forwardRef } from "react";
 import { DividerContentPlacement, DividerType } from "./type";
 import useLayout from "../Layout/useLayout";
