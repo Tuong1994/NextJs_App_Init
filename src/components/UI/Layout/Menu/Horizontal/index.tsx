@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ForwardRefRenderFunction, useContext, useState, forwardRef } from "react";
 import { MenuItems } from "../type";
 import LayoutContext, { LayoutColor } from "../../Context";

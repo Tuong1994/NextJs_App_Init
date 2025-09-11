@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, ForwardRefRenderFunction, useContext, useState, forwardRef, useEffect } from "react";
 import { MenuItems } from "../type";
 import { STORAGE_KEY } from "../MenuStore";

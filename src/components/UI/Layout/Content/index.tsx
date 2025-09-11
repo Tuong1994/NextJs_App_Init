@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ReactNode, ForwardRefRenderFunction, useContext, forwardRef } from "react";
 import LayoutContext from "../Context";
 import useLayout from "../useLayout";

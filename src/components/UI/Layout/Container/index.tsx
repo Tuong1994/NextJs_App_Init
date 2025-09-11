@@ -1,3 +1,5 @@
+"use client"
+
 import { HTMLAttributes, ReactNode, ForwardRefRenderFunction, useEffect, forwardRef } from "react";
 import LayoutContext, { ETheme, LayoutColor, LayoutContextState, LayoutTheme } from "../Context";
 import useLayout from "../useLayout";
