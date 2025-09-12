@@ -114,7 +114,9 @@ const CarouselVertical: ForwardRefRenderFunction<HTMLDivElement, CarouselVertica
       <div
         key={item.id}
         id={`${slideId}-${idx}`}
-        ref={(el: HTMLDivElement) => (slideRefs.current[idx] = el)}
+        ref={(el: HTMLDivElement) => {
+          slideRefs.current[idx] = el;
+        }}
         className="view-item"
       >
         {item.content}

@@ -1,3 +1,5 @@
+"use client"
+
 import { forwardRef, ForwardRefRenderFunction, HTMLAttributes, useMemo } from "react";
 import type { ISourceOptions } from "@tsparticles/engine";
 import Particles from "@tsparticles/react";

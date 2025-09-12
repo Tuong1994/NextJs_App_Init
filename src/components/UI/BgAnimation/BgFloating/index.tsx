@@ -1,3 +1,5 @@
+"use client"
+
 import { CSSProperties, forwardRef, ForwardRefRenderFunction, HTMLAttributes } from "react";
 import { LayoutColor } from "../../Layout/Context";
 import { BgFloatingItemShape } from "../type";

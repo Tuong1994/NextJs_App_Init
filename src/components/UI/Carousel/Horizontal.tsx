@@ -1,8 +1,18 @@
-"use client"
+"use client";
 
-import { CSSProperties, ReactNode, ForwardRefRenderFunction, useEffect, forwardRef, useRef } from "react";
+import {
+  CSSProperties,
+  ReactNode,
+  ForwardRefRenderFunction,
+  useEffect,
+  forwardRef,
+  useRef,
+} from "react";
 import { CarouselItems } from "./type";
-import { HiOutlineChevronLeft as ArrowLeft, HiOutlineChevronRight as ArrowRight } from "react-icons/hi2";
+import {
+  HiOutlineChevronLeft as ArrowLeft,
+  HiOutlineChevronRight as ArrowRight,
+} from "react-icons/hi2";
 import useCarousel from "./useCarousel";
 import utils from "@/utils";
 
@@ -23,7 +33,10 @@ export interface CarouselHorizontalProps {
 
 let interval: any;
 
-const CarouselHorizontal: ForwardRefRenderFunction<HTMLDivElement, CarouselHorizontalProps> = (
+const CarouselHorizontal: ForwardRefRenderFunction<
+  HTMLDivElement,
+  CarouselHorizontalProps
+> = (
   {
     rootClassName = "",
     style,
@@ -89,9 +102,13 @@ const CarouselHorizontal: ForwardRefRenderFunction<HTMLDivElement, CarouselHoriz
 
   const nextBtnDisabled = !isReSlide && slidePos === items.length - 1;
 
-  const prevBtnDisabledClassName = prevBtnDisabled ? "carousel-action-disabled" : "";
+  const prevBtnDisabledClassName = prevBtnDisabled
+    ? "carousel-action-disabled"
+    : "";
 
-  const nextBtnDisabledClassName = nextBtnDisabled ? "carousel-action-disabled" : "";
+  const nextBtnDisabledClassName = nextBtnDisabled
+    ? "carousel-action-disabled"
+    : "";
 
   const mainClassName = utils.formatClassName(
     "carousel",
@@ -100,9 +117,15 @@ const CarouselHorizontal: ForwardRefRenderFunction<HTMLDivElement, CarouselHoriz
     rootClassName
   );
 
-  const prevActionClassName = utils.formatClassName("carousel-action", prevBtnDisabledClassName);
+  const prevActionClassName = utils.formatClassName(
+    "carousel-action",
+    prevBtnDisabledClassName
+  );
 
-  const nextActionClassName = utils.formatClassName("carousel-action", nextBtnDisabledClassName);
+  const nextActionClassName = utils.formatClassName(
+    "carousel-action",
+    nextBtnDisabledClassName
+  );
 
   const onPrev = () => {
     handlePrevSlide();
@@ -119,7 +142,9 @@ const CarouselHorizontal: ForwardRefRenderFunction<HTMLDivElement, CarouselHoriz
       <div
         key={item.id}
         id={`${slideId}-${idx}`}
-        ref={(el: HTMLDivElement) => (slideRefs.current[idx] = el)}
+        ref={(el: HTMLDivElement) => {
+          slideRefs.current[idx] = el;
+        }}
         className="view-item"
       >
         {item.content}
@@ -143,12 +168,20 @@ const CarouselHorizontal: ForwardRefRenderFunction<HTMLDivElement, CarouselHoriz
   return (
     <div ref={ref} style={style} className={mainClassName}>
       {hasArrow && (
-        <button disabled={prevBtnDisabled} className={prevActionClassName} onClick={onPrev}>
+        <button
+          disabled={prevBtnDisabled}
+          className={prevActionClassName}
+          onClick={onPrev}
+        >
           {prevButtonIcon}
         </button>
       )}
       {hasArrow && (
-        <button disabled={nextBtnDisabled} className={nextActionClassName} onClick={onNext}>
+        <button
+          disabled={nextBtnDisabled}
+          className={nextActionClassName}
+          onClick={onNext}
+        >
           {nextButtonIcon}
         </button>
       )}
