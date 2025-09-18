@@ -1,6 +1,7 @@
 "use client"
 
-import { forwardRef, ForwardRefRenderFunction, HTMLAttributes, useMemo } from "react";
+import { CSSProperties, forwardRef, ForwardRefRenderFunction, HTMLAttributes, useMemo } from "react";
+import { LayoutColor } from "../../Layout/Context";
 import type { ISourceOptions } from "@tsparticles/engine";
 import Particles from "@tsparticles/react";
 import linksOptions from "./sourceOptions/linksOptions";
@@ -11,15 +12,27 @@ interface BgParticlesProps extends HTMLAttributes<HTMLDivElement> {
   id?: string;
   rootClassName?: string;
   options?: ISourceOptions;
-  layoutColor?: boolean;
+  hasColor?: boolean;
   fullScreen?: boolean;
+  color?: LayoutColor;
+  zIndex?: number;
 }
 
 const BgParticles: ForwardRefRenderFunction<HTMLDivElement, BgParticlesProps> = (
-  { rootClassName = "", id = "tsparticles", fullScreen = true, layoutColor, options, ...restProps },
+  {
+    rootClassName = "",
+    id = "tsparticles",
+    zIndex = 0,
+    fullScreen = true,
+    hasColor,
+    options,
+    color,
+    style,
+    ...restProps
+  },
   ref
 ) => {
-  const { init, particlesTheme } = useParticles(layoutColor);
+  const { init, particlesTheme } = useParticles({ hasColor, fullScreen, color });
 
   const particlesOptions: ISourceOptions = useMemo(() => {
     if (options) return options;
@@ -28,13 +41,21 @@ const BgParticles: ForwardRefRenderFunction<HTMLDivElement, BgParticlesProps> = 
       color: particlesTheme.particlesColor,
       fullScreen,
     });
-  }, [particlesTheme.background, particlesTheme.particlesColor, particlesTheme.linkColor, fullScreen]);
+  }, [options, particlesTheme.background, particlesTheme.particlesColor, particlesTheme.linkColor, fullScreen]);
+
+  const rootStyle = useMemo<CSSProperties>(
+    () => ({
+      ...style,
+      zIndex,
+    }),
+    [style, zIndex]
+  );
 
   const className = utils.formatClassName("bg-particles", rootClassName);
 
   if (init) {
     return (
-      <div ref={ref} {...restProps} className={className}>
+      <div ref={ref} {...restProps} style={rootStyle} className={className}>
         <Particles
           id={id}
           className="bg-particles-view"
