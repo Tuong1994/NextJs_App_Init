@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useCallback, useEffect } from "react";
 
 const useRender = (trigger: boolean, time = 300) => {

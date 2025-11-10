@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   CSSProperties,
@@ -15,6 +15,7 @@ import {
   HiOutlineChevronLeft as ArrowLeft,
   HiOutlineChevronRight as ArrowRight,
 } from "react-icons/hi2";
+import { useTranslations } from "next-intl";
 import { PageType, PaginationColor, PaginationShape } from "./type";
 import { FlexAppContext } from "../Flex/Context";
 import { useLang } from "@/hooks";
@@ -58,6 +59,8 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
   },
   ref
 ) => {
+  const t = useTranslations("pagination")
+
   const { isPhone } = useContext(FlexAppContext);
 
   const { layoutValue } = useLayout();
@@ -81,13 +84,19 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
 
   const rightArrowDisabled = currentPage === totalPages;
 
-  const leftArrowDisabledClassName = leftArrowDisabled ? "actions-button-disabled" : "";
+  const leftArrowDisabledClassName = leftArrowDisabled
+    ? "actions-button-disabled"
+    : "";
 
-  const rightArrowDisabledClassName = rightArrowDisabled ? "actions-button-disabled" : "";
+  const rightArrowDisabledClassName = rightArrowDisabled
+    ? "actions-button-disabled"
+    : "";
 
   const justifyClassName = hasContent ? "pagination-justify" : "";
 
-  const colorClassName = ghost ? `pagination-ghost pagination-ghost-${color}` : `pagination-${color}`;
+  const colorClassName = ghost
+    ? `pagination-ghost pagination-ghost-${color}`
+    : `pagination-${color}`;
 
   const shapeClassName = `pagination-${shape}`;
 
@@ -102,9 +111,15 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
     rootClassName
   );
 
-  const leftActionsClassName = utils.formatClassName("actions-button", leftArrowDisabledClassName);
+  const leftActionsClassName = utils.formatClassName(
+    "actions-button",
+    leftArrowDisabledClassName
+  );
 
-  const rightActionsClassName = utils.formatClassName("actions-button", rightArrowDisabledClassName);
+  const rightActionsClassName = utils.formatClassName(
+    "actions-button",
+    rightArrowDisabledClassName
+  );
 
   useEffect(() => onChangePage?.(currentPage), [currentPage]);
 
@@ -117,7 +132,8 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
       );
 
     return range.map((item, idx) => {
-      const activeClassName = currentPage === item ? "actions-button-active" : "";
+      const activeClassName =
+        currentPage === item ? "actions-button-active" : "";
 
       if (typeof item !== "number") {
         return (
@@ -177,7 +193,9 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
 
   return (
     <div ref={ref} style={style} className={mainClassName}>
-      {hasContent && <div className="pagination-content">{renderContent()}</div>}
+      {hasContent && (
+        <div className="pagination-content">{renderContent()}</div>
+      )}
 
       <div className="pagination-actions">
         <button

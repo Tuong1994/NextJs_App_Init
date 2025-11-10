@@ -1,3 +1,5 @@
+"use client"
+
 import { RefObject, useState, useEffect, useCallback } from "react";
 
 const useDetectBottom = (

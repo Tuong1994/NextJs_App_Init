@@ -5,7 +5,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import "./globals.css";
-import "@/style/main.scss"
+import "@/style/main.scss";
+import FlexProvider from "@/components/UI/Flex/Provider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -19,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-    // Ensure that the incoming `locale` is valid
+  // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -40,13 +41,15 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-   // Enable static rendering
+  // Enable static rendering
   setRequestLocale(locale);
 
   return (
     <html>
       <body className={poppins.className}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <FlexProvider>{children}</FlexProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+"use client"
+
 import useLangStore from "@/store/LangStore";
 
 const useLang = () => {

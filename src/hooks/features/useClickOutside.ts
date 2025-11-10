@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, RefObject, Dispatch, SetStateAction } from "react";
 
 const useClickOutside = (ref: RefObject<any>, setTrigger: Dispatch<SetStateAction<boolean>>) => {

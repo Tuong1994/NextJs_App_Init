@@ -1,3 +1,5 @@
+"use client"
+
 import { FormRule } from "@/components/Control/type";
 import {
   EMAIL_REGEX,
