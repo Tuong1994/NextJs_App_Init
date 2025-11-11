@@ -2,9 +2,9 @@ import { Key, ReactNode } from "react";
 import { Columns } from "./type";
 import { CheckBox } from "@/components/Control";
 import { HiMinus } from "react-icons/hi2";
-import { useLang } from "@/hooks";
 import Button, { ButtonProps } from "@/components/UI/Button";
 import TableCell from "./TableCell";
+import { useTranslations } from "next-intl";
 
 interface TableHeadProps<M> {
   columns: Columns<M>;
@@ -35,7 +35,7 @@ const TableHead = <M extends object>({
   handleSelectAllRow,
   handleCancelSelect,
 }: TableHeadProps<M>) => {
-  const { lang } = useLang();
+  const t = useTranslations('common.actions')
 
   const removeActionProps: ButtonProps = {
     sizes: "sm",
@@ -69,10 +69,10 @@ const TableHead = <M extends object>({
         <th colSpan={columns.length}>
           <div className="table-head-remove-actions">
             <Button {...removeActionProps} onClick={() => onSelectRow?.(rowSelectedKeys)}>
-              {removeButtonTitle ?? lang.common.actions.remove}
+              {removeButtonTitle ?? t('remove')}
             </Button>
             <Button {...cancelActionProps} onClick={handleCancelSelect}>
-              {cancelButtonTitle ?? lang.common.actions.cancel}
+              {cancelButtonTitle ?? t('cancel')}
             </Button>
           </div>
         </th>

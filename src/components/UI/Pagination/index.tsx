@@ -18,7 +18,6 @@ import {
 import { useTranslations } from "next-intl";
 import { PageType, PaginationColor, PaginationShape } from "./type";
 import { FlexAppContext } from "../Flex/Context";
-import { useLang } from "@/hooks";
 import usePagination from "./usePagination";
 import useLayout from "../Layout/useLayout";
 import utils from "@/utils";
@@ -59,13 +58,11 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
   },
   ref
 ) => {
-  const t = useTranslations("pagination")
+  const t = useTranslations("common.pagination");
 
   const { isPhone } = useContext(FlexAppContext);
 
   const { layoutValue } = useLayout();
-
-  const { lang } = useLang();
 
   const { layoutTheme: theme } = layoutValue;
 
@@ -160,8 +157,7 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
     const end = start + limit;
     const from = start === 0 ? 1 : start;
     const to = end > total ? total : end;
-    const { showing, of, result } = lang.common.pagination;
-    return `${showing} ${from} - ${to} ${of} ${total} ${result}`;
+    return `${t("showing")} ${from} - ${to} ${t("of")} ${total} ${t("result")}`;
   };
 
   const handleChangePage = (type: PageType, page?: number) => {

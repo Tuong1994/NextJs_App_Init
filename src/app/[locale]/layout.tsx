@@ -48,7 +48,10 @@ export default async function RootLayout({
     <html>
       <body className={poppins.className}>
         <NextIntlClientProvider>
-          <FlexProvider>{children}</FlexProvider>
+          <FlexProvider>
+            {children}
+            <div id='portal'></div>
+          </FlexProvider>
         </NextIntlClientProvider>
       </body>
     </html>
