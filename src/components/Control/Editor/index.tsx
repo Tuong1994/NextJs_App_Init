@@ -15,7 +15,7 @@ import { ComponentSize } from "@/common/type";
 import { ControlColor, ControlShape } from "../type";
 import { ReactQuillProps, UnprivilegedEditor } from "react-quill";
 import { useFormContext } from "react-hook-form";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import FormContext from "../Form/FormContext";
 import FormItemContext from "../Form/FormItemContext";
 import dynamic from "next/dynamic";
@@ -65,17 +65,13 @@ const Editor: ForwardRefRenderFunction<HTMLDivElement, EditorProps> = (
   },
   ref
 ) => {
-  const { lang } = useLang();
+  const t = useTranslations("common.form");
 
   const rhfMethods = useFormContext();
 
   const { layoutValue } = useLayout();
 
-  const {
-    color: rhfColor,
-    sizes: rhfSizes,
-    shape: rhfShape,
-  } = useContext(FormContext);
+  const { color: rhfColor, sizes: rhfSizes, shape: rhfShape } = useContext(FormContext);
 
   const { isRhf, rhfName, rhfValue, rhfDisabled } = useContext(FormItemContext);
 
@@ -121,15 +117,9 @@ const Editor: ForwardRefRenderFunction<HTMLDivElement, EditorProps> = (
 
   const shapeClassName = `editor-${controlShape}`;
 
-  const controlLabelClassName = utils.formatClassName(
-    "editor-label",
-    labelClassName
-  );
+  const controlLabelClassName = utils.formatClassName("editor-label", labelClassName);
 
-  const controlInputClassName = utils.formatClassName(
-    "editor-control",
-    inputClassName
-  );
+  const controlInputClassName = utils.formatClassName("editor-control", inputClassName);
 
   const mainClassName = utils.formatClassName(
     "editor",
@@ -161,10 +151,7 @@ const Editor: ForwardRefRenderFunction<HTMLDivElement, EditorProps> = (
 
   const handleBlur = () => setTouched(false);
 
-  const handleChange = (
-    value: string,
-    editor: UnprivilegedEditor
-  ) => {
+  const handleChange = (value: string, editor: UnprivilegedEditor) => {
     let content = "";
     const text = editor.getText().trim();
     if (text !== "") content = value;
@@ -180,11 +167,7 @@ const Editor: ForwardRefRenderFunction<HTMLDivElement, EditorProps> = (
           <div style={labelStyle} className={controlLabelClassName}>
             {required && <span className="label-required">*</span>}
             <span>{label}</span>
-            {showOptional && (
-              <span className="label-optional">
-                ({lang.common.form.others.optional})
-              </span>
-            )}
+            {showOptional && <span className="label-optional">({t("others.optional")})</span>}
           </div>
         )}
 
@@ -197,9 +180,7 @@ const Editor: ForwardRefRenderFunction<HTMLDivElement, EditorProps> = (
           readOnly={controlDisabled}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onChange={(value, delta, source, editor) =>
-            handleChange(value, editor)
-          }
+          onChange={(value, delta, source, editor) => handleChange(value, editor)}
         />
       </label>
     </div>

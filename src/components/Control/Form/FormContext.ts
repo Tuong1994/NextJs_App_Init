@@ -1,3 +1,5 @@
+"use client"
+
 import { createContext } from "react";
 import { ComponentColor, ComponentSize } from "@/common/type";
 import { ControlShape } from "../type";

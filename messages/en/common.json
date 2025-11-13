@@ -37,17 +37,17 @@
         "email": "Email invalid",
         "confirmPassword": "The passwords do not match",
         "whiteSpace": "White space are not allowed",
-        "min": "{{min}} is minimum",
-        "max": "{{max}} is maximum",
-        "minLength": "Must have at least {{min}} character",
-        "maxLength": "Maximum length {{max}} characters"
+        "min": "{min} is minimum",
+        "max": "{max} is maximum",
+        "minLength": "Must have at least {min} character",
+        "maxLength": "Maximum length {max} characters"
       },
       "others": {
         "emptyOptions": "No options",
         "optional": "Optional",
-        "fileSize": "File size must not greater than {{num}}MB",
-        "fileType": "Only accept file type {{type}}",
-        "fileMax": "Can only upload {{num}} image per time",
+        "fileSize": "File size must not greater than {num}MB",
+        "fileType": "Only accept file type {type}",
+        "fileMax": "Can only upload {num} image per time",
         "newUploadImg": "New images",
         "uploadedImg": "Uploaded images"
       }

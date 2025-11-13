@@ -4,7 +4,7 @@ import withLocale from "@/libs/withLocale";
 import LocaleSwitcher from "@/components/Page/LocaleSwitcher";
 import { ImageUpload } from "@/components/Control/Upload";
 
-const { SingleImageUpload } = ImageUpload;
+const { MultipleImageUpload } = ImageUpload;
 
 const HomePage: NextPage = async () => {
   const t = await getTranslations("home");
@@ -13,7 +13,7 @@ const HomePage: NextPage = async () => {
     <div className="!p-16">
       <span>{t("title")}</span>
       <LocaleSwitcher />
-      <SingleImageUpload />
+      <MultipleImageUpload />
     </div>
   );
 };

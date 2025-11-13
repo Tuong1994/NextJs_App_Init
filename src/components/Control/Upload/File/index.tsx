@@ -14,7 +14,6 @@ import {
 } from "react";
 import { ControlColor, ControlShape, UploadError, UploadItem, UploadItems } from "../../type";
 import { ACCEPT_FILE_TYPE, DEFAULT_FILE_SIZE } from "../constant";
-import { REPLACE_NUM_REGEX, REPLACE_TYPE_REGEX } from "@/common/constant/regex";
 import { NoteMessage } from "@/components/UI";
 import { useTranslations } from "next-intl";
 import FormContext from "../../Form/FormContext";
@@ -96,9 +95,8 @@ const FileUpload: ForwardRefRenderFunction<HTMLInputElement, FileUploadProps> = 
 
   const errorMessage = () => {
     if (!error) return "";
-    if (error.type === "fileSize")
-      return t("others.fileSize").replace(REPLACE_NUM_REGEX, `${limit / (1024 * 1024)}`);
-    if (error.type === "fileType") return t("others.fileType").replace(REPLACE_TYPE_REGEX, `${fileAccepted}`);
+    if (error.type === "fileSize") return t("others.fileSize", { num: limit / (1024 * 1024) });
+    if (error.type === "fileType") return t("others.fileType", { type: fileAccepted });
   };
 
   const handleUpload = (files: File[]) => {

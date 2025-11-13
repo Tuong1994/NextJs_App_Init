@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, CSSProperties, ReactNode, ForwardRefRenderFunction, forwardRef } from "react";
 import { BsCloudUpload } from "react-icons/bs";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import utils from "@/utils";
 
 interface MultipleImageUploadControlProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,7 +13,7 @@ const MultipleImageUploadControl: ForwardRefRenderFunction<
   HTMLInputElement,
   MultipleImageUploadControlProps
 > = ({ controlClassName = "", controlStyle, label, ...restProps }, ref) => {
-  const { lang } = useLang();
+  const t = useTranslations("common.form");
 
   const controlInputClassName = utils.formatClassName("group-control", controlClassName);
 
@@ -22,7 +22,7 @@ const MultipleImageUploadControl: ForwardRefRenderFunction<
     return (
       <div className="control-label">
         <BsCloudUpload size={30} className="label-icon" />
-        <p>{lang.common.form.placeholder.imagesUpload}</p>
+        <p>{t("placeholder.imagesUpload")}</p>
       </div>
     );
   };

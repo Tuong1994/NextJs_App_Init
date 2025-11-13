@@ -1,3 +1,5 @@
+"use client"
+
 import useFormStore from "./FormStore";
 
 const useForm = () => {

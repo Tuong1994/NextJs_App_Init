@@ -12,7 +12,6 @@ import {
   forwardRef,
 } from "react";
 import { ACCEPT_IMAGE_FILE_TYPE, DEFAULT_FILE_SIZE } from "../../constant";
-import { REPLACE_NUM_REGEX, REPLACE_TYPE_REGEX } from "@/common/constant/regex";
 import { ControlColor, ControlShape, UploadError } from "@/components/Control/type";
 import { NoteMessage } from "@/components/UI";
 import { useTranslations } from "next-intl";
@@ -121,11 +120,10 @@ const SingleImageUpload: ForwardRefRenderFunction<HTMLInputElement, SingleImageU
 
   const errorMessage = () => {
     if (!error) return "";
-    if (error.type === "fileSize")
-      return t("others.fileSize").replace(REPLACE_NUM_REGEX, `${limit / (1024 * 1024)}`);
+    if (error.type === "fileSize") return t("others.fileSize", { num: limit / (1024 * 1024) });
     if (error.type === "fileType") {
       const types = fileAccepted.split(",").map((type) => type.replace("image/", ""));
-      return t("others.fileType").replace(REPLACE_TYPE_REGEX, `${types.join(", ")}`);
+      return t("others.fileType", { type: types.join(", ") });
     }
   };
 

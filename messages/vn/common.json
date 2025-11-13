@@ -37,17 +37,17 @@
         "email": "Email không hợp lệ",
         "confirmPassword": "Mật khẩu không trùng khớp",
         "whiteSpace": "Không được có khoảng trắng",
-        "min": "{{min}} là tối thiểu",
-        "max": "{{max}} là tối đa",
-        "minLength": "Phải có ít nhất {{min}} ký tự",
-        "maxLength": "Độ dài tối đa là {{max}} ký tự"
+        "min": "{min} là tối thiểu",
+        "max": "{max} là tối đa",
+        "minLength": "Phải có ít nhất {min} ký tự",
+        "maxLength": "Độ dài tối đa là {max} ký tự"
       },
       "others": {
         "emptyOptions": "Không có lựa chọn",
         "optional": "Không bắt buộc",
-        "fileSize": "Kích thước tệp không được lớn hơn {{num}}MB",
-        "fileType": "Chỉ chấp nhận loại tệp {{type}}",
-        "fileMax": "Mỗi lần chỉ có thể tải lên {{num}} hình ảnh",
+        "fileSize": "Kích thước tệp không được lớn hơn {num}MB",
+        "fileType": "Chỉ chấp nhận loại tệp {type}",
+        "fileMax": "Mỗi lần chỉ có thể tải lên {num} hình ảnh",
         "newUploadImg": "Hình ảnh mới",
         "uploadedImg": "Hình ảnh đã tải lên"
       }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   InputHTMLAttributes,
@@ -14,9 +14,8 @@ import {
 } from "react";
 import { ControlColor, ControlShape, UploadError, UploadItem, UploadItems } from "@/components/Control/type";
 import { ACCEPT_IMAGE_FILE_TYPE, DEFAULT_FILE_SIZE } from "../../constant";
-import { REPLACE_NUM_REGEX, REPLACE_TYPE_REGEX } from "@/common/constant/regex";
 import { NoteMessage } from "@/components/UI";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import Control from "./Control";
 import ViewArea from "./ViewArea";
 import FormContext from "@/components/Control/Form/FormContext";
@@ -58,7 +57,7 @@ const MultipleImageUpload: ForwardRefRenderFunction<HTMLInputElement, MultipleIm
   },
   ref
 ) => {
-  const { lang } = useLang();
+  const t = useTranslations("common.form");
 
   const { isForm, color: rhfColor, shape: rhfShape, disabled: formDisabled } = useContext(FormContext);
 
@@ -124,13 +123,11 @@ const MultipleImageUpload: ForwardRefRenderFunction<HTMLInputElement, MultipleIm
 
   const errorMessage = () => {
     if (!error) return "";
-    if (error.type === "fileSize")
-      return lang.common.form.others.fileSize.replace(REPLACE_NUM_REGEX, `${limit / (1024 * 1024)}`);
-    if (error.type === "fileMax")
-      return lang.common.form.others.fileMax.replace(REPLACE_NUM_REGEX, `${maxUpload}`);
+    if (error.type === "fileSize") return t("others.fileSize", { num: limit / (1024 * 1024) });
+    if (error.type === "fileMax") return t("others.fileMax", { num: maxUpload });
     if (error.type === "fileType") {
       const types = fileAccepted.split(",").map((type) => type.replace("image/", ""));
-      return lang.common.form.others.fileType.replace(REPLACE_TYPE_REGEX, `${types.join(", ")}`);
+      return t("others.fileType", { type: types.join(", ") });
     }
   };
 
@@ -220,7 +217,7 @@ const MultipleImageUpload: ForwardRefRenderFunction<HTMLInputElement, MultipleIm
 
       {defaultViewImages.length > 0 && (
         <ViewArea
-          title={lang.common.form.others.uploadedImg}
+          title={t("others.uploadedImg")}
           items={defaultViewImages}
           controlDisabled={controlDisabled}
           handleRemove={onRemoveDefaultImages}
@@ -229,7 +226,7 @@ const MultipleImageUpload: ForwardRefRenderFunction<HTMLInputElement, MultipleIm
 
       {viewImages.length > 0 && (
         <ViewArea
-          title={lang.common.form.others.newUploadImg}
+          title={t("others.newUploadImg")}
           items={viewImages}
           controlDisabled={controlDisabled}
           handleRemove={handleRemove}
