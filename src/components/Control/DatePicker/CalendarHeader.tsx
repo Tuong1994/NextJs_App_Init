@@ -5,7 +5,7 @@ import {
 } from "react-icons/hi2";
 import { SelectOptions } from "../type";
 import { ELang } from "@/common/enum";
-import { useLang } from "@/hooks";
+import { useLocale } from "next-intl";
 import { monthsEn, monthsVn } from "./data";
 import HeaderSelect from "./HeaderSelect";
 
@@ -24,7 +24,7 @@ const CalendarHeader: FC<CalendarHeaderProps> = ({
   handleSelectYear,
   handleSwitchMonth,
 }) => {
-  const { locale } = useLang();
+  const locale = useLocale();
 
   const months = locale === ELang.EN ? monthsEn : monthsVn;
 

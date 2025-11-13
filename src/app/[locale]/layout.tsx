@@ -4,9 +4,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import "./globals.css";
-import "@/style/main.scss";
 import FlexProvider from "@/components/UI/Flex/Provider";
+import '@/style/globals.css';
+import "@/style/main.scss";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

@@ -1,5 +1,6 @@
 import { ReactNode, FC } from "react";
 import { UI } from "@/components";
+import { useTranslations } from "next-intl";
 import type { TableColor } from "./type";
 import type { ButtonProps } from "../Button";
 
@@ -23,8 +24,8 @@ export interface TableFilterProps {
 const TableFilter: FC<TableFilterProps> = ({
   color,
   filter,
-  filterButtonTitle = "Filter",
-  cancelFilterButtonTitle = "Cancel",
+  filterButtonTitle,
+  cancelFilterButtonTitle,
   filterButtonProps,
   cancelFilterButtonProps,
   hasFilterButton = true,
@@ -32,6 +33,8 @@ const TableFilter: FC<TableFilterProps> = ({
   onFilter,
   onCancelFilter,
 }) => {
+  const t = useTranslations('common.actions')
+
   const filterButtonDefaultProps: ButtonProps = {
     sizes: "sm",
     color,
@@ -51,9 +54,9 @@ const TableFilter: FC<TableFilterProps> = ({
       {filter}
       <FlexCol>
         <Space aligns="middle">
-          {hasFilterButton && <Button {...filterButtonDefaultProps}>{filterButtonTitle}</Button>}
+          {hasFilterButton && <Button {...filterButtonDefaultProps}>{filterButtonTitle ?? t('filter')}</Button>}
           {hasCancelFilterButton && (
-            <Button {...cancelFilterButtonDefaultProps}>{cancelFilterButtonTitle}</Button>
+            <Button {...cancelFilterButtonDefaultProps}>{cancelFilterButtonTitle ?? t('cancel')}</Button>
           )}
         </Space>
       </FlexCol>

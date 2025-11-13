@@ -14,7 +14,7 @@ import {
 import { ComponentSize } from "@/common/type";
 import { ChoicesControlColor } from "../type";
 import { useFormContext } from "react-hook-form";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import FormContext from "../Form/FormContext";
 import FormItemContext from "../Form/FormItemContext";
 import useLayout from "@/components/UI/Layout/useLayout";
@@ -58,6 +58,8 @@ const Radio: ForwardRefRenderFunction<HTMLInputElement, RadioProps> = (
   },
   ref
 ) => {
+  const t = useTranslations('common.form')
+
   const rhfMethods = useFormContext();
 
   const { layoutValue } = useLayout();
@@ -67,8 +69,6 @@ const Radio: ForwardRefRenderFunction<HTMLInputElement, RadioProps> = (
   const { color: rhfColor, sizes: rhfSizes } = useContext(FormContext);
 
   const { isRhf, rhfValue, rhfName, rhfDisabled, rhfError, rhfOnChange } = useContext(FormItemContext);
-
-  const { lang } = useLang();
 
   const [isChecked, setIsChecked] = useState<boolean>(checked);
 
@@ -145,7 +145,7 @@ const Radio: ForwardRefRenderFunction<HTMLInputElement, RadioProps> = (
           <div style={labelStyle} className={controlLabelClassName}>
             {required && <span className="label-required">*</span>}
             <span>{label}</span>
-            {showOptional && <span className="label-optional">({lang.common.form.others.optional})</span>}
+            {showOptional && <span className="label-optional">({t('others.optional')})</span>}
           </div>
         )}
       </label>

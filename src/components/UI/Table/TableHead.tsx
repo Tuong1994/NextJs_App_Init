@@ -2,9 +2,9 @@ import { Key, ReactNode } from "react";
 import { Columns } from "./type";
 import { CheckBox } from "@/components/Control";
 import { HiMinus } from "react-icons/hi2";
+import { useTranslations } from "next-intl";
 import Button, { ButtonProps } from "@/components/UI/Button";
 import TableCell from "./TableCell";
-import { useTranslations } from "next-intl";
 
 interface TableHeadProps<M> {
   columns: Columns<M>;

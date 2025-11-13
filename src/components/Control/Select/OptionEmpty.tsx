@@ -1,14 +1,14 @@
 import { FC, ReactNode } from "react";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 
 interface OptionEmptyProps {
   emptyContent?: ReactNode | ReactNode[];
 }
 
 const OptionEmpty: FC<OptionEmptyProps> = ({ emptyContent }) => {
-  const { lang } = useLang();
+  const t = useTranslations("common.form");
 
-  return <div className="list-empty">{emptyContent ?? lang.common.form.others.emptyOptions}</div>;
+  return <div className="list-empty">{emptyContent ?? t("others.emptyOptions")}</div>;
 };
 
 export default OptionEmpty;

@@ -8,7 +8,7 @@ import {
 } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { UploadError } from "../../type";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import utils from "@/utils";
 
 interface FileUploadControlProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -35,7 +35,7 @@ const FileUploadControl: ForwardRefRenderFunction<HTMLInputElement, FileUploadCo
   },
   ref
 ) => {
-  const { lang } = useLang();
+  const t = useTranslations('common.form')
 
   const dragClassName = dragged ? "upload-group-dragged" : "";
 
@@ -56,7 +56,7 @@ const FileUploadControl: ForwardRefRenderFunction<HTMLInputElement, FileUploadCo
     return (
       <div className="group-label">
         <AiOutlineUpload size={18} />
-        <span>{lang.common.form.placeholder.filesUpload}</span>
+        <span>{t('placeholder.filesUpload')}</span>
       </div>
     );
   };

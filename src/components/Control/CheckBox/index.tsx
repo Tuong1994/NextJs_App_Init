@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   InputHTMLAttributes,
@@ -15,7 +15,7 @@ import { HiCheck } from "react-icons/hi2";
 import { ChoicesControlColor, InputValue } from "../type";
 import { ComponentSize } from "@/common/type";
 import { useFormContext } from "react-hook-form";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import FormContext from "../Form/FormContext";
 import FormItemContext from "../Form/FormItemContext";
 import useLayout from "@/components/UI/Layout/useLayout";
@@ -59,6 +59,8 @@ const CheckBox: ForwardRefRenderFunction<HTMLInputElement, CheckBoxProps> = (
   },
   ref
 ) => {
+  const t = useTranslations("common.form");
+
   const rhfMethods = useFormContext();
 
   const { layoutValue } = useLayout();
@@ -68,8 +70,6 @@ const CheckBox: ForwardRefRenderFunction<HTMLInputElement, CheckBoxProps> = (
   const { color: rhfColor, sizes: rhfSizes } = useContext(FormContext);
 
   const { type, isRhf, rhfName, rhfValue, rhfDisabled, rhfError } = useContext(FormItemContext);
-
-  const { lang } = useLang();
 
   const [isChecked, setIsChecked] = useState<boolean>(checked);
 
@@ -182,7 +182,7 @@ const CheckBox: ForwardRefRenderFunction<HTMLInputElement, CheckBoxProps> = (
           <div style={labelStyle} className={controlLabelClassName}>
             {required && <span className="label-required">*</span>}
             <span>{label}</span>
-            {showOptional && <span className="label-optional">({lang.common.form.others.optional})</span>}
+            {showOptional && <span className="label-optional">({t("others.optional")})</span>}
           </div>
         )}
       </label>

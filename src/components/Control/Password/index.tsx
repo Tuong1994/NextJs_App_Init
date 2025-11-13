@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   InputHTMLAttributes,
@@ -17,7 +17,7 @@ import { HiEye, HiEyeSlash, HiXCircle } from "react-icons/hi2";
 import { ControlColor, ControlShape, InputValue } from "../type";
 import { ComponentSize } from "@/common/type";
 import { useFormContext } from "react-hook-form";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import FormContext from "../Form/FormContext";
 import FormItemContext from "../Form/FormItemContext";
 import useLayout from "@/components/UI/Layout/useLayout";
@@ -55,7 +55,7 @@ const InputPassword: ForwardRefRenderFunction<HTMLInputElement, InputPasswordPro
     sizes = "md",
     color = "blue",
     shape = "square",
-    placeholder = "Enter information...",
+    placeholder,
     disabled,
     required,
     optional,
@@ -66,11 +66,11 @@ const InputPassword: ForwardRefRenderFunction<HTMLInputElement, InputPasswordPro
   },
   ref
 ) => {
+  const t = useTranslations("common.form");
+
   const rhfMethods = useFormContext();
 
   const { layoutValue } = useLayout();
-
-  const { lang } = useLang();
 
   const { layoutTheme: theme } = layoutValue;
 
@@ -94,7 +94,7 @@ const InputPassword: ForwardRefRenderFunction<HTMLInputElement, InputPasswordPro
 
   const controlShape = isRhf ? rhfShape : shape;
 
-  const controlPlaceholder = placeholder ?? lang.common.form.placeholder.enter;
+  const controlPlaceholder = placeholder ?? t("placeholder.enter");
 
   const showClearIcon = hasClear && inputValue && !controlDisabled;
 
@@ -182,7 +182,7 @@ const InputPassword: ForwardRefRenderFunction<HTMLInputElement, InputPasswordPro
           <div style={labelStyle} className={controlLabelClassName}>
             {required && <span className="label-required">*</span>}
             <span>{label}</span>
-            {showOptional && <span className="label-optional">({lang.common.form.others.optional})</span>}
+            {showOptional && <span className="label-optional">({t("others.optional")})</span>}
           </div>
         )}
 

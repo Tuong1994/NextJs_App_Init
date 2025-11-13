@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   InputHTMLAttributes,
@@ -16,12 +16,12 @@ import { ControlColor, ControlShape, UploadError, UploadItem, UploadItems } from
 import { ACCEPT_FILE_TYPE, DEFAULT_FILE_SIZE } from "../constant";
 import { REPLACE_NUM_REGEX, REPLACE_TYPE_REGEX } from "@/common/constant/regex";
 import { NoteMessage } from "@/components/UI";
-import { useLang } from "@/hooks";
+import { useTranslations } from "next-intl";
 import FormContext from "../../Form/FormContext";
 import Control from "./Control";
 import Items from "./Items";
-import utils from "@/utils";
 import useLayout from "@/components/UI/Layout/useLayout";
+import utils from "@/utils";
 
 export interface FileUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   rootClassName?: string;
@@ -53,9 +53,9 @@ const FileUpload: ForwardRefRenderFunction<HTMLInputElement, FileUploadProps> = 
   },
   ref
 ) => {
-  const { layoutValue } = useLayout();
+  const t = useTranslations("common.form");
 
-  const { lang } = useLang();
+  const { layoutValue } = useLayout();
 
   const { layoutTheme: theme } = layoutValue;
 
@@ -97,9 +97,8 @@ const FileUpload: ForwardRefRenderFunction<HTMLInputElement, FileUploadProps> = 
   const errorMessage = () => {
     if (!error) return "";
     if (error.type === "fileSize")
-      return lang.common.form.others.fileSize.replace(REPLACE_NUM_REGEX, `${limit / (1024 * 1024)}`);
-    if (error.type === "fileType")
-      return lang.common.form.others.fileType.replace(REPLACE_TYPE_REGEX, `${fileAccepted}`);
+      return t("others.fileSize").replace(REPLACE_NUM_REGEX, `${limit / (1024 * 1024)}`);
+    if (error.type === "fileType") return t("others.fileType").replace(REPLACE_TYPE_REGEX, `${fileAccepted}`);
   };
 
   const handleUpload = (files: File[]) => {

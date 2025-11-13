@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import {
   InputHTMLAttributes,
   CSSProperties,
   ReactNode,
-  ForwardedRef,
   ChangeEvent,
   useState,
   useRef,
@@ -19,7 +18,8 @@ import {
 import { ControlColor, ControlShape, Option, SelectOptions, SelectRef } from "../type";
 import { ComponentSize } from "@/common/type";
 import { useFormContext } from "react-hook-form";
-import { useRender, useClickOutside, useDetectBottom, useLang } from "@/hooks";
+import { useRender, useClickOutside, useDetectBottom } from "@/hooks";
+import { useTranslations } from "next-intl";
 import SelectControl from "./Control";
 import FormContext from "../Form/FormContext";
 import FormItemContext from "../Form/FormItemContext";
@@ -90,11 +90,11 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
   },
   ref
 ) => {
+  const t = useTranslations("common.form");
+
   const rhfMethods = useFormContext();
 
   const { layoutValue } = useLayout();
-
-  const { lang } = useLang();
 
   const { layoutTheme: theme } = layoutValue;
 
@@ -151,8 +151,8 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
 
   const controlPlaceHolder = useMemo(() => {
     if (placeholder) return placeholder;
-    if (dropdown && hasSearch) return lang.common.form.placeholder.search;
-    return lang.common.form.placeholder.select;
+    if (dropdown && hasSearch) return t("placeholder.search");
+    return t("placeholder.select");
   }, [placeholder, dropdown]);
 
   const controlDisabled = rhfDisabled ? rhfDisabled : disabled;
@@ -256,7 +256,7 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
         <label style={labelStyle} className={controlLabelClassName}>
           {required && <span className="label-required">*</span>}
           <span>{label}</span>
-          {showOptional && <span className="label-optional">({lang.common.form.others.optional})</span>}
+          {showOptional && <span className="label-optional">({t("others.optional")})</span>}
         </label>
       )}
 
