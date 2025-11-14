@@ -2,9 +2,7 @@ import { NextPage } from "next";
 import { getTranslations } from "next-intl/server";
 import withLocale from "@/libs/withLocale";
 import LocaleSwitcher from "@/components/Page/LocaleSwitcher";
-import { ImageUpload } from "@/components/Control/Upload";
-
-const { MultipleImageUpload } = ImageUpload;
+import Example from "@/components/Page/Example";
 
 const HomePage: NextPage = async () => {
   const t = await getTranslations("home");
@@ -13,7 +11,7 @@ const HomePage: NextPage = async () => {
     <div className="!p-16">
       <span>{t("title")}</span>
       <LocaleSwitcher />
-      <MultipleImageUpload />
+      <Example />
     </div>
   );
 };
