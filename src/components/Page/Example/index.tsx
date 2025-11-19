@@ -1,29 +1,18 @@
-"use client"
+"use client";
 
-import { Form, FormItem, Input, InputPassword } from "@/components/Control";
-import { Button } from "@/components/UI";
-import { useFormRule } from "@/hooks";
-
-type FormValues = {
-  email: string;
-  password: string;
-};
+import { TreeSelect, DatePicker } from "@/components/Control";
 
 const Example = () => {
-  const { email, password } = useFormRule();
-
-  const initialValues: FormValues = { email: "", password: "" };
+  const options = [
+    { label: "This is option 1", value: 1 },
+    { label: "This is option 2", value: 2 },
+  ];
 
   return (
-    <Form<FormValues> initialData={initialValues}>
-      <FormItem name="email" rules={email()}>
-        <Input required label="Email" />
-      </FormItem>
-      <FormItem name="password" rules={password()}>
-        <InputPassword required label="Password" />
-      </FormItem>
-      <Button>Submit</Button>
-    </Form>
+    <>
+      <DatePicker placement="right" rootStyle={{ width: "100px" }} />
+      <TreeSelect placement="right" rootStyle={{ width: "100px" }} options={options} />
+    </>
   );
 };
 

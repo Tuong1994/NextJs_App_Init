@@ -387,6 +387,16 @@
   }
 }
 
+// Placement
+.datepicker-right {
+  .datepicker-wrap {
+    .wrap-calendar {
+      left: unset;
+      right: 0;
+    }
+  }
+}
+
 // Color
 .datepicker-blue {
   .wrap-group {

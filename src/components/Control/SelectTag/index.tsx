@@ -17,7 +17,7 @@ import {
 } from "react";
 import { useFormContext } from "react-hook-form";
 import { ComponentSize } from "@/common/type";
-import { ControlColor, ControlShape, Option, SelectOptions, SelectRef } from "../type";
+import { ControlColor, ControlDropdownPlacement, ControlShape, Option, SelectOptions, SelectRef } from "../type";
 import { useRender, useClickOutside, useDetectBottom } from "@/hooks";
 import { useTranslations } from "next-intl";
 import SelectTagControl from "./Control";
@@ -42,6 +42,7 @@ export interface SelectTagProps extends InputHTMLAttributes<HTMLInputElement> {
   sizes?: ComponentSize;
   color?: ControlColor;
   shape?: ControlShape;
+  placement?: ControlDropdownPlacement
   total?: number;
   limit?: number;
   async?: boolean;
@@ -69,6 +70,7 @@ const SelectTag: ForwardRefRenderFunction<SelectRef, SelectTagProps> = (
     sizes = "md",
     color = "blue",
     shape = "square",
+    placement = 'left',
     placeholder,
     disabled,
     options = [],
@@ -180,6 +182,8 @@ const SelectTag: ForwardRefRenderFunction<SelectRef, SelectTagProps> = (
 
   const shapeClassName = `select-${controlShape}`;
 
+  const placementClassName = `select-${placement}`
+
   const bottomClassName = bottom ? "select-bottom" : "";
 
   const disabledClassName = controlDisabled ? "select-disabled" : "";
@@ -191,6 +195,7 @@ const SelectTag: ForwardRefRenderFunction<SelectRef, SelectTagProps> = (
     colorClassName,
     sizeClassName,
     shapeClassName,
+    placementClassName,
     bottomClassName,
     errorClassName,
     themeClassName,

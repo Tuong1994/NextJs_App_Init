@@ -15,7 +15,7 @@ import {
   forwardRef,
   ForwardRefRenderFunction,
 } from "react";
-import { ControlColor, ControlShape, Option, SelectOptions, SelectRef } from "../type";
+import { ControlColor, ControlDropdownPlacement, ControlShape, Option, SelectOptions, SelectRef } from "../type";
 import { ComponentSize } from "@/common/type";
 import { useFormContext } from "react-hook-form";
 import { useRender, useClickOutside, useDetectBottom } from "@/hooks";
@@ -42,6 +42,7 @@ export interface TreeSelectProps extends InputHTMLAttributes<HTMLInputElement> {
   sizes?: ComponentSize;
   color?: ControlColor;
   shape?: ControlShape;
+  placement?: ControlDropdownPlacement
   total?: number;
   limit?: number;
   async?: boolean;
@@ -69,6 +70,7 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
     sizes = "md",
     color = "blue",
     shape = "square",
+    placement = 'left',
     placeholder,
     disabled,
     options = [],
@@ -175,6 +177,8 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
 
   const shapeClassName = `tree-select-${controlShape}`;
 
+  const placementClassName = `tree-select-${placement}`
+
   const bottomClassName = bottom ? "tree-select-bottom" : "";
 
   const disabledClassName = controlDisabled ? "tree-select-disabled" : "";
@@ -186,6 +190,7 @@ const TreeSelect: ForwardRefRenderFunction<SelectRef, TreeSelectProps> = (
     colorClassName,
     sizeClassName,
     shapeClassName,
+    placementClassName,
     bottomClassName,
     errorClassName,
     themeClassName,
