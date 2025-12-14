@@ -25,6 +25,7 @@ import utils from "@/utils";
 export interface PaginationProps {
   rootClassName?: string;
   style?: CSSProperties;
+  page?: number;
   total?: number;
   limit?: number;
   simple?: boolean;
@@ -46,6 +47,7 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
     simple,
     showContent,
     ghost,
+    page = 1,
     total = 100,
     limit = 10,
     color = "blue",
@@ -66,7 +68,7 @@ const Pagination: ForwardRefRenderFunction<HTMLDivElement, PaginationProps> = (
 
   const { layoutTheme: theme } = layoutValue;
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(page);
 
   const { paginationRange: range, totalPages } = usePagination({
     total,
